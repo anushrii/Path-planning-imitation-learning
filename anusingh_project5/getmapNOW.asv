@@ -1,0 +1,18 @@
+function [finalcost, ctg] = getmapNOW(k,im,feat_arielmap,weight7)
+figure(200), imshow(im)
+hold on
+
+[x, y] = ginput();
+
+
+finalcost = getCostNOW(feat_arielmap,weight7);
+ctg = dijkstra_matrix(double(finalcost),y(end),x(end));
+[ip1, jp1] = dijkstra_path(ctg, double(finalcost),round(y(1)), round(x(1)));
+
+if k==1
+figure(200)
+hold on
+plot(jp1, ip1,'g-','linewidth',3)
+hold off
+end
+
